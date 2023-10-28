@@ -1,0 +1,28 @@
+@import './base.css';
+
+body {
+  background-color: #c25348;
+  color: black;
+}
+
+.board {
+  background-color: white;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid grey;
+  max-width: 500px;
+}
+
+.board-item {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 0.5rem;
+}
+
+.board-item p {
+  font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
