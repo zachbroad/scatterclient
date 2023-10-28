@@ -2,17 +2,20 @@
 
 import {state} from "@/io";
 
-const {results} = defineProps(['results'])
+const {username, results, prompts} = defineProps(['results', 'username', 'prompts'])
 
 </script>
 
 <template>
-  <div class="board-item-container">
-    <div v-for="(prompt, index) in state.room.game.currentPrompts" class="board-item" :key="index">
-      <p>{{ prompt }}</p>
-      <input type="text" v-model="answers[index]" :disabled="!inProgress">
+    <div class="board-item-container card mb-3">
+        <b class="card-header">{{ username }}</b>
+        <div class="card-body">
+            <div v-for="(prompt, index) in prompts" class="board-item" :key="index">
+                <p>{{ prompt }}</p>
+                <input type="text" :value="results[index]" disabled>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <style scoped>
