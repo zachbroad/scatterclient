@@ -1,6 +1,5 @@
 import {io} from "socket.io-client";
 import {reactive} from "vue";
-import {useToast} from "vue-toast-notification";
 import {ApplicationStatus} from "./util";
 
 const SERVER = "http://localhost:3000";
@@ -30,9 +29,6 @@ export const state = reactive({
 
 export const socket = io(SERVER, {
   reconnectionDelayMax: 10000,
-  // auth: {
-  //   token: "123"
-  // },
   autoConnect: false,
   query: {
     name: state.name

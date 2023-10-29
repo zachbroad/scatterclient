@@ -83,8 +83,9 @@ socket.on('room:message', (message) => {
     </div>
     <div v-else-if="state.room.status === GameStatus.Results">
         <div class="d-flex my-4 flex-column">
-            <div class="justify-content-center bg-white text-center">
+            <div class="justify-content-center bg-white text-center py-4 rounded">
                 <h1 class="">The results are in!</h1>
+              <Countdown :time="state.room.game.resultsDuration" />
                 <p>Winner: N/A</p>
             </div>
         </div>

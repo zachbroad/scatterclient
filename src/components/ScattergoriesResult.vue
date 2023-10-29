@@ -8,6 +8,9 @@ const {username, results, prompts} = defineProps(['results', 'username', 'prompt
 
 <template>
     <div class="board-item-container card mb-3">
+      {{prompts}}
+      <br>
+      {{results}}
         <b class="card-header">{{ username }}</b>
         <div class="card-body">
             <div v-for="(prompt, index) in prompts" class="board-item" :key="index">

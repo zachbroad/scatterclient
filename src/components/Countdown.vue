@@ -34,7 +34,6 @@ b {
 
 .countdown {
   margin: auto;
-  margin-top: 10rem;
   padding: 2rem;
   background-color: white;
   border-radius: 5rem;
