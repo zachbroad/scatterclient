@@ -1,6 +1,15 @@
 <script setup>
 
-import {state} from "@/io";
+import {socket, state} from "@/io";
+
+import {ref} from "vue";
+
+const input = ref("");
+
+function submitInput() {
+  socket.emit('global:message', input.value)
+  input.value = "";
+}
 
 </script>
 

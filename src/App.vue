@@ -9,14 +9,7 @@ import Lobby from "@/components/Lobby.vue";
 import Navbar from "@/components/Navbar.vue";
 
 
-const input = ref("");
-
 const $toast = useToast();
-
-function submitInput() {
-  socket.emit('global:message', input.value)
-  input.value = "";
-}
 
 watchEffect(() => {
   socket.connect();
@@ -55,13 +48,6 @@ watchEffect(() => {
     state.connected = false;
   })
 
-  socket.on('global:message', msg => {
-    state.messages = [...state.messages, msg];
-  })
-
-  socket.on('global:messageHistory', msgs => {
-    state.messages = msgs;
-  })
 
   socket.on('error', msg => {
     console.error(msg);
@@ -73,11 +59,21 @@ watchEffect(() => {
     $toast.default(msg);
   })
 
+  /* GLOBAL */
+  socket.on('global:message', msg => {
+    state.messages = [...state.messages, msg];
+  })
+
+  socket.on('global:messageHistory', msgs => {
+    state.messages = msgs;
+  })
+
   socket.on('global:roomList', rooms => {
     console.dir(rooms);
     state.rooms = rooms;
   })
 
+  /* ROOM */
   socket.on('room:data', room => {
     state.appStatus = ApplicationStatus.InGame;
     state.room = room;
@@ -89,11 +85,11 @@ watchEffect(() => {
 </script>
 
 <template>
-  <Navbar />
+  <Navbar/>
 
   <template v-if="state.connected">
     <template v-if="state.appStatus === ApplicationStatus.InMainLobby">
-      <Lobby />
+      <Lobby/>
     </template>
 
     <template v-else-if="state.appStatus === ApplicationStatus.InGame">

@@ -29,14 +29,14 @@ setInterval(() => {
 
 <style scoped>
 b {
-  font-size: 2rem;
+    font-size: 2rem;
 }
 
 .countdown {
-  margin: auto;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 5rem;
+    margin: auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 5rem;
 }
 
 </style>

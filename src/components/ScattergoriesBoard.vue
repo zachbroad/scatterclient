@@ -42,7 +42,8 @@ socket.on('room:requestAnswers', () => {
     slug: state.room.slug,
     answers: answers
   });
-  console.log('Send answers!');
+
+  console.log('Sent answers!');
 })
 
 </script>
@@ -67,7 +68,7 @@ socket.on('room:requestAnswers', () => {
 
 
 hr {
-  margin: 0.5rem 0;
+    margin: 0.5rem 0;
 }
 
 </style>
