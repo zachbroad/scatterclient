@@ -1,19 +1,17 @@
 <script setup>
-
+defineProps(['left', 'center', 'right']);
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="#">ScatterClone</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+  <div class="container px-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top m-4">
+      <div class="container-fluid align-items-center">
+        <div v-if="left" v-html="left"></div>
+        <a class="navbar-brand fw-bold align-self-center mx-auto" href="/">{{ center }}</a>
+        <div v-if="right" v-html="right"></div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </template>
 
 <style scoped>

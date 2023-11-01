@@ -10,12 +10,15 @@
   "dependencies": {
     "bootstrap": "^5.3.2",
     "bootstrap-vue-next": "^0.14.10",
+    "bootswatch": "^5.3.2",
+    "dotenv": "^16.3.1",
     "socket.io-client": "^4.7.2",
     "vue": "^3.3.4",
     "vue-toast-notification": "^3.1.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.4.0",
+    "sass": "^1.69.5",
     "unplugin-vue-components": "^0.25.2",
     "vite": "^4.4.11"
   }

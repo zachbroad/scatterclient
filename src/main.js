@@ -9,6 +9,6 @@ import 'vue-toast-notification/dist/theme-bootstrap.css';
 import './assets/main.css';
 
 
-let app = createApp(App)
-app.use(ToastPlugin)
-app.mount('#app')
+let app = createApp(App);
+app.use(ToastPlugin);
+app.mount('#app');
