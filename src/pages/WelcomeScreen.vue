@@ -32,7 +32,7 @@ function connect() {
   <div class="container">
     <div class="bg-white p-3 mb-2 rounded shadow border border-black mx-auto"
          style="max-width: 400px">
-      <h5>Play {{ APP_TITLE }}</h5>
+      <h2>Play {{ APP_TITLE }}</h2>
       <p>Choose a username to play online with others or start a Single Player game!</p>
 
       <form @submit.prevent="connect" :disabled="!usernameValid">
