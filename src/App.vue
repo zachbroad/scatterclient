@@ -8,8 +8,8 @@ import GamePage from "./pages/GamePage.vue";
 import HomePage from "@/pages/HomePage.vue";
 import WelcomeScreen from "@/pages/WelcomeScreen.vue";
 
-import 'bootstrap/scss/bootstrap.scss';
-import 'bootswatch/dist/sketchy/bootstrap.css';
+import "bootstrap/scss/bootstrap.scss";
+import "bootswatch/dist/sketchy/bootstrap.css";
 
 // watchEffect(() => {
 //   initializeSocket();

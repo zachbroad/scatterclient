@@ -10,25 +10,25 @@ const letter = ref("A");
 // Messages w/ initial state
 const answers = reactive([]);
 for (let i = 0; i < 20; i++) {
-  answers.push('');
+  answers.push("");
 }
 
-const {inProgress} = defineProps(['inProgress']);
+const {inProgress} = defineProps(["inProgress"]);
 
 
 onMounted(() => {
   letter.value = state.room.game.letter;
 });
 
-socket.on('room:requestAnswers', () => {
-  console.log('Server is requesting answers...');
+socket.on("room:requestAnswers", () => {
+  console.log("Server is requesting answers...");
 
-  socket.emit('room:provideAnswers', {
+  socket.emit("room:provideAnswers", {
     slug: state.room.slug,
     answers: answers
   });
 
-  console.log('Sent answers!');
+  console.log("Sent answers!");
 });
 
 </script>

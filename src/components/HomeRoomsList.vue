@@ -1,6 +1,6 @@
 <script setup>
 
-defineProps(['rooms']);
+defineProps(["rooms"]);
 
 </script>
 

@@ -2,7 +2,7 @@
 
 import {onMounted, ref} from "vue";
 
-const props = defineProps(['time', 'letter']);
+const props = defineProps(["time", "letter"]);
 
 const time = ref(10);
 

@@ -5,7 +5,7 @@ import GameOverviewInfo from "@/components/GameOverviewInfo.vue";
 import {computed, ref} from "vue";
 import Navbar from "@/components/Navbar.vue";
 import {state} from "@/state";
-import {initializeSocket} from "@/network/socket";
+import {initializeSocket, startSinglePlayer} from "@/network/socket";
 import {useToast} from "bootstrap-vue-next";
 import {toast} from "@/util";
 
@@ -16,7 +16,7 @@ const usernameValid = computed(() => username.value.trim().length !== 0);
 
 function connect() {
   if (!usernameValid) {
-    toast('You must enter a username!');
+    toast("You must enter a username!");
     return;
   }
 
@@ -36,11 +36,12 @@ function connect() {
       <p>Choose a username to play online with others or start a Single Player game!</p>
 
       <form @submit.prevent="connect" :disabled="!usernameValid">
-        <input v-model.trim="username" placeholder="Username" id="username" type="text" class="form-control">
+        <input v-model.trim="username" required placeholder="Username" id="username" type="text" class="form-control">
 
         <div class="d-flex justify-content-around mt-3">
-          <button class="btn btn-primary">Play Single Player</button>
-          <button class="btn btn-success" :disabled="!usernameValid" type="submit">Connect to Server</button>
+          <!-- TODO : STATE CONNECTING -->
+          <button class="btn btn-primary" @click="startSinglePlayer">Play Single Player</button>
+          <button class="btn btn-success" type="submit">{{ !state.connecting ? `Connect to Server` : `Connecting...` }}</button>
         </div>
       </form>
     </div>

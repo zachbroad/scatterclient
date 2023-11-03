@@ -1,5 +1,5 @@
 <script setup>
-defineProps(['left', 'center', 'right']);
+defineProps(["left", "center", "right"]);
 </script>
 
 <template>

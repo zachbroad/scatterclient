@@ -3,7 +3,7 @@
 import {state} from "@/state";
 import {computed} from "vue";
 
-const {username, results, answers} = defineProps(['answers', 'results', 'username']);
+const {username, results, answers} = defineProps(["answers", "results", "username"]);
 
 const score = computed(() => results.reduce((a, b) => a + b, 0));
 

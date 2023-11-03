@@ -23,4 +23,10 @@ export function initializeSocket() {
   registerGlobalHandler(socket);
   registerRoomHandler(socket);
 
+  // TODO: Handle socket error connecting
 }
+
+export function startSinglePlayer() {
+  socket.emit("room:singlePlayer");
+}
+

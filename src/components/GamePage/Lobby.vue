@@ -3,24 +3,14 @@
 import {state} from "@/state";
 import {ref} from "vue";
 import {socket} from "@/network/socket";
+import {ApplicationStatus} from "@/util";
 
-function startGame() {
-  socket.emit('room:startGame', {
-    slug: state.room.slug
-  });
-}
-
-socket.on('room:message', (message) => {
-  console.log('Got message: ' + message);
-  state.room.chat = state.room.chat.concat(message);
-});
-
-/* Room Messaging */
+// Messaging
 const message = ref("");
 
 function sendRoomMessage() {
   if (message.value.trim() !== "") {
-    socket.emit('room:message', {
+    socket.emit("room:message", {
       room: state.room.slug,
       message: message.value
     });
@@ -30,12 +20,26 @@ function sendRoomMessage() {
   message.value = "";
 }
 
-
-function leaveRoom() {
-  socket.emit('room:leave', {
-    room: state.room
+// Game Related Funcs
+function startGame() {
+  socket.emit("room:startGame", {
+    slug: state.room.slug
   });
 }
+
+function leaveRoom() {
+  socket.emit("room:leave", {
+    room: state.room
+  });
+  state.status = ApplicationStatus.InMainLobby;
+}
+
+// Networking
+socket.on("room:message", (message) => {
+  console.log("Got message: " + message);
+  state.room.chat = state.room.chat.concat(message);
+});
+
 
 </script>
 
@@ -45,14 +49,14 @@ function leaveRoom() {
       <div class="col-sm-12 col-lg-5 mb-3 order-sm-first">
         <div class="bg-white card card-body rounded border-dark shadow-sm" style="height: 420px;">
           <h5>Chat</h5>
-          <ul>
+          <ul style="overflow-y: scroll;">
             <li v-for="chat in state.room.chat">{{ chat }}</li>
-            <li v-if="state.room.chat.length === 0">no messages</li>
+            <!--            <li v-if="state.room.chat.length === 0">no messages</li>-->
           </ul>
 
           <form @submit.prevent="sendRoomMessage" class="d-flex mt-auto">
             <input class="form-control" type="text" v-model="message">
-            <button class="btn btn-success" type="submit">Send</button>
+            <button class="btn btn-success ms-2" type="submit">Send</button>
           </form>
         </div>
       </div>
@@ -60,7 +64,7 @@ function leaveRoom() {
         <div class="bg-white card card-body rounded shadow-lg">
           <div class="d-flex justify-content-between">
             <h5 class="fw-bold d-inline">{{ state.room.name }}</h5>
-            <p class="badge bg-dark">{{ state.room.players.length }} / {{ state.room.capacity }} players</p>
+            <p class="badge bg-dark">{{ state.room.clients.length }} / {{ state.room.capacity }} players</p>
           </div>
           <hr>
           <h6>Settings</h6>
@@ -78,8 +82,10 @@ function leaveRoom() {
 
         <div class="bg-white card card-body rounded border-dark shadow-sm mt-3">
           <h5>Players</h5>
-          <ol>
-            <li v-for="player in state.room.players">{{ player.username }} - {{ state.room.scores[player.id] }}</li>
+          <ol class="m-0">
+            <li v-for="client in state.room.clients" class="mb-2">
+              {{ client.username }} <span class="badge small bg-warning text-black float-end">{{ state.room.scores[client.id] }}</span>
+            </li>
           </ol>
         </div>
       </div>

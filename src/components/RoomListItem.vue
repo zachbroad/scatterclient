@@ -5,11 +5,11 @@ import {computed} from "vue";
 import {GameStatus} from "@/util";
 import {socket} from "@/network/socket";
 
-const {room} = defineProps(['room']);
+const {room} = defineProps(["room"]);
 
 function joinRoom() {
-  console.log('trying to join room');
-  socket.emit('room:join', room.slug);
+  console.log("trying to join room");
+  socket.emit("room:join", room.slug);
 }
 
 const canJoin = computed(() => room.status === GameStatus.Waiting);
@@ -23,7 +23,7 @@ const canJoin = computed(() => room.status === GameStatus.Waiting);
       <span class="badge bg-dark rounded-pill ml-auto float-end">{{ room.status }}</span>
     </h5>
     <small>{{ room.slug }}</small>
-    <p>{{ room.players.length }} / {{ room.capacity }} players</p>
+    <p>{{ room.clients.length }} / {{ room.capacity }} players</p>
     <button @click="joinRoom" class="btn btn-outline-primary" :disabled="!canJoin">join room</button>
   </div>
 </template>

@@ -17,5 +17,5 @@ export const GameStatus = Object.freeze({
 const {show} = useToast();
 
 export function toast(msg) {
-  show(msg, {pos: 'bottom-right'});
+  show(msg, {pos: "bottom-right"});
 }

@@ -1,24 +1,12 @@
 <script setup>
 import {state} from "@/state";
-import {watchEffect} from "vue";
 import {GameStatus} from "@/util";
-import ScattergoriesBoardPlayable from "@/components/ScattergoriesBoardPlayable.vue";
 import Lobby from "@/components/GamePage/Lobby.vue";
 import Results from "@/components/GamePage/Results.vue";
 import Scoring from "@/components/GamePage/Scoring.vue";
 import Starting from "@/components/GamePage/Starting.vue";
 import InProgress from "@/components/GamePage/InProgress.vue";
 import Navbar from "@/components/Navbar.vue";
-
-
-watchEffect(() => {
-});
-
-// onUnmounted(() => {
-//   socket.off('room:message')
-// })
-
-
 </script>
 
 <template>
@@ -51,7 +39,7 @@ watchEffect(() => {
   </div>
 
   <div v-else>
-    no game
+    Error: no game
     {{ state }}
   </div>
 </template>

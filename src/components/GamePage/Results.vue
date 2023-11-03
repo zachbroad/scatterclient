@@ -5,7 +5,9 @@ import ScattergoriesBoardResult from "@/components/ScattergoriesBoardResult.vue"
 import {socket} from "@/network/socket";
 
 function voteGoToLobby() {
-  socket.emit('room:goToLobby', {room: state.room});
+  socket.emit("room:voteGoToLobby", {
+    room: state.room
+  });
 }
 
 </script>
@@ -23,10 +25,9 @@ function voteGoToLobby() {
 
     <div class="d-flex my-4 flex-column">
       <div class="justify-content-center bg-white text-center py-4 rounded">
-        <div v-for="player in state.room.players">
-          <p>{{ player.username }} - {{ state.room.clickedOkResults ? "rdy" : "not rdy" }}</p>
-          {{ player }}
-        </div>
+        <ul v-for="client in state.room.clients">
+          <li>{{ client.username }} - {{ state.room.clickedOkResults[client.id] ? "rdy" : "not rdy" }}</li>
+        </ul>
         <button @click="voteGoToLobby">Go To Lobby</button>
       </div>
     </div>
