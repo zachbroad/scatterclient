@@ -45,7 +45,6 @@ socket.on("room:requestAnswers", () => {
         <input class="form-control" type="text" v-model="answers[index]" :disabled="!inProgress">
       </div>
     </div>
-    <button class="btn btn-success">submit</button>
   </div>
 </template>
 
