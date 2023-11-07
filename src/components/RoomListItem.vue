@@ -16,7 +16,7 @@ const canJoin = computed(() => room.status === GameStatus.Waiting);
 
 </script>
 
-<template>
+<template v-if="room.isPublic">
   <div class="card card-body mb-2">
     <h5 class="fw-bold">
       {{ room.name }}

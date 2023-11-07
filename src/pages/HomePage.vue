@@ -83,8 +83,8 @@ onUnmounted(() => {
         </div>
         <small>{{ state.rooms.length }} rooms</small>
       </div>
-      <RoomListItem v-for="room in state.rooms" :room="room"/>
 
+      <RoomListItem v-for="room in state.rooms" :room="room"/>
 
       <div v-if="state.rooms.length === 0"
            class="bg-white p-3 mb-3 rounded align-items-center shadow border border-black text-center">

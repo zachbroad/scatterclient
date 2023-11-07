@@ -6,11 +6,12 @@ const props = defineProps(["time", "letter"]);
 
 const time = ref(10);
 
+// Start the timer when mounted
 onMounted(() => {
-  console.dir(props.time);
   time.value = props.time;
 });
 
+// Decrease time every second
 setInterval(() => {
   time.value = time.value - 1;
 }, 1000);
@@ -22,7 +23,7 @@ setInterval(() => {
   <div class="d-flex">
     <div class="countdown align-content-center justify-content-center align-items-center text-center">
       <b v-if="time > 0">{{ time }} seconds</b>
-      <b v-if="time <= 0">game is starting...</b>
+      <b v-if="time <= 0">Game is starting...</b>
     </div>
   </div>
 </template>

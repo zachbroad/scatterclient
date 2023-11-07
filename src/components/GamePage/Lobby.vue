@@ -1,7 +1,7 @@
 <script setup>
 
-import {state} from "@/state";
-import {ref} from "vue";
+import {leaveRoom, state} from "@/state";
+import {computed, ref} from "vue";
 import {socket} from "@/network/socket";
 import {ApplicationStatus} from "@/util";
 
@@ -27,19 +27,17 @@ function startGame() {
   });
 }
 
-function leaveRoom() {
-  socket.emit("room:leave", {
-    room: state.room
-  });
-  state.status = ApplicationStatus.InMainLobby;
-}
-
 // Networking
 socket.on("room:message", (message) => {
   console.log("Got message: " + message);
   state.room.chat = state.room.chat.concat(message);
 });
 
+// Used to auto scroll to bottom with flex-direction reverse col
+const reversedChat = computed(() => {
+  let chat = [...state.room.chat];
+  return chat.reverse();
+});
 
 </script>
 
@@ -47,13 +45,17 @@ socket.on("room:message", (message) => {
   <div class="container">
     <div class="row justify-content-center align-content-stretch">
       <div class="col-sm-12 col-lg-5 mb-3 order-sm-first">
+
+        <!-- Chat -->
         <div class="bg-white card card-body rounded border-dark shadow-sm" style="height: 420px;">
           <h5>Chat</h5>
-          <ul style="overflow-y: scroll;">
-            <li v-for="chat in state.room.chat">{{ chat }}</li>
-            <!--            <li v-if="state.room.chat.length === 0">no messages</li>-->
+
+          <!-- Chat Box -->
+          <ul class="chat-box">
+            <li v-for="chat in reversedChat" v-text="chat"></li>
           </ul>
 
+          <!-- Chat Input Box -->
           <form @submit.prevent="sendRoomMessage" class="d-flex mt-auto">
             <input class="form-control" type="text" v-model="message">
             <button class="btn btn-success ms-2" type="submit">Send</button>
@@ -69,9 +71,8 @@ socket.on("room:message", (message) => {
           <hr>
           <h6>Settings</h6>
           <ul>
-            <li>Topics: N/A</li>
-            <li>Rounds: N/A</li>
-            <li>Difficulty: N/A</li>
+            <li><b>Topics</b>: All</li>
+            <li><b>Difficulty</b>: Normal</li>
           </ul>
           <hr>
           <div class="d-flex">
@@ -84,7 +85,8 @@ socket.on("room:message", (message) => {
           <h5>Players</h5>
           <ol class="m-0">
             <li v-for="client in state.room.clients" class="mb-2">
-              {{ client.username }} <span class="badge small bg-warning text-black float-end">{{ state.room.scores[client.id] }}</span>
+              {{ client.username }}
+              <span class="badge small bg-warning text-black float-end">{{ state.room.scores[client.id] }}</span>
             </li>
           </ol>
         </div>
@@ -94,5 +96,11 @@ socket.on("room:message", (message) => {
 </template>
 
 <style scoped>
+.chat-box {
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: scroll;
+}
+
 
 </style>

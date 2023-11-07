@@ -14,21 +14,23 @@ function voteGoToLobby() {
 
 <template>
   <div class="container">
+    <div class="row">
 
-    <div class="d-flex my-4 flex-column">
-      <div class="justify-content-center bg-white text-center py-4 rounded">
-        <h1 class="">The results are in!</h1>
-        <Countdown :time="state.room.game.resultsDuration"/>
-        <p>Winner: {{ state.room.game.winner ? state.room.game.winner.username : "N/A" }}</p>
+      <div class="d-flex my-4 flex-column">
+        <div class="justify-content-center bg-white text-center py-4 rounded mx-auto px-4 border border-dark">
+          <h1 class="">The results are in!</h1>
+          <Countdown :time="state.room.game.resultsDuration"/>
+          <p>Winner: {{ state.room.game.winner ? state.room.game.winner.username : "N/A" }}</p>
+        </div>
       </div>
-    </div>
 
-    <div class="d-flex my-4 flex-column">
-      <div class="justify-content-center bg-white text-center py-4 rounded">
-        <ul v-for="client in state.room.clients">
-          <li>{{ client.username }} - {{ state.room.clickedOkResults[client.id] ? "rdy" : "not rdy" }}</li>
-        </ul>
-        <button @click="voteGoToLobby">Go To Lobby</button>
+      <div class="d-flex my-4 flex-column">
+        <div class="justify-content-center bg-white text-center py-4 rounded mx-auto px-4">
+          <ul v-for="client in state.room.clients">
+            <li>{{ client.username }} - {{ state.room.clickedOkResults[client.id] ? "rdy" : "not rdy" }}</li>
+          </ul>
+          <button @click="voteGoToLobby">Go To Lobby</button>
+        </div>
       </div>
     </div>
 
