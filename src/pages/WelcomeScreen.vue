@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar.vue";
 import {state} from "@/state";
 import {initializeSocket, startSinglePlayerGame} from "@/network/socket";
 import {useToast} from "bootstrap-vue-next";
-import {toast} from "@/util";
+import {error, toast} from "@/util";
 
 const username = ref("");
 const {show} = useToast();
@@ -16,7 +16,7 @@ const usernameValid = computed(() => username.value.trim().length !== 0);
 
 function connect() {
   if (!usernameValid) {
-    toast("You must enter a username!");
+    error("You must enter a username!");
     return;
   }
 

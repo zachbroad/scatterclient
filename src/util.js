@@ -19,3 +19,7 @@ const {show} = useToast();
 export function toast(msg) {
   show(msg, {pos: "bottom-right"});
 }
+
+export function error(msg) {
+  show(msg, {pos: "bottom-right", variant: "danger"});
+}

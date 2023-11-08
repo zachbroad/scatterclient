@@ -1,7 +1,6 @@
 import {reactive} from "vue";
-import {ApplicationStatus} from "./util";
+import {ApplicationStatus, toast} from "./util";
 import {socket} from "@/network/socket";
-import App from "@/App.vue";
 
 export const state = reactive({
   // Connected to server?
@@ -40,6 +39,7 @@ export function goHome() {
     }
   }
 
+  toast("Returning to main lobby.");
   leaveRoom()
   state.status = ApplicationStatus.InMainLobby;
 }

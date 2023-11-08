@@ -1,5 +1,5 @@
 import {state} from "@/state";
-import {toast} from "@/util";
+import {error, toast} from "@/util";
 
 export const registerGlobalHandler = (socket) => {
   socket.on("global:message", msg => {
@@ -17,7 +17,7 @@ export const registerGlobalHandler = (socket) => {
 
   socket.on("error", msg => {
     console.error(msg);
-    toast(msg);
+    error(msg);
   });
 
   socket.on("message", msg => {

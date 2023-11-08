@@ -3,11 +3,11 @@
 import {state} from "@/state";
 
 import {onMounted, onUnmounted, ref} from "vue";
-import RoomListItem from "@/components/RoomListItem.vue";
-import Navbar from "@/components/Navbar.vue";
 import {APP_TITLE} from "@/config";
+import {error, toast} from "@/util";
 import {socket, startSinglePlayerGame} from "@/network/socket";
-import {toast} from "@/util";
+
+import Navbar from "@/components/Navbar.vue";
 import HomeRoomsList from "@/components/HomeRoomsList.vue";
 
 const input = ref("");
@@ -28,7 +28,7 @@ function joinRandomRoom() {
 
 function disconnect() {
   if (!socket.connected) {
-    toast("You already are disconnected!");
+    error("You already are disconnected!");
     console.error("Tried to disconnect but not connected!");
     return;
   }
@@ -59,9 +59,14 @@ onUnmounted(() => {
 
 function changeName() {
   const newName = prompt("What would you like to change your name to?");
-  socket.emitWithAck("global:changeName", newName);
-  // change name in state
-  state.name = newName;
+
+  socket.emitWithAck("global:changeName", newName)
+      .then(() => {
+        // change name in state
+        state.name = newName;
+
+        toast(`Your name has been changed to ${newName}`);
+      });
 }
 
 
@@ -85,7 +90,7 @@ function changeName() {
       </div>
     </div>
 
-    <HomeRoomsList />
+    <HomeRoomsList/>
 
 
     <!--    <div class="card card-body bg-dark-subtle">-->
