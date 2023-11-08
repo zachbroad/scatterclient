@@ -1,6 +1,5 @@
 import {reactive} from "vue";
-import {ApplicationStatus, toast} from "./util";
-import {socket} from "@/network/socket";
+import {toast} from "./util";
 
 export const state = reactive({
   // Connected to server?
@@ -19,6 +18,9 @@ export const state = reactive({
   // Username provided by user
   name: null,
 });
+
+import {socket} from "@/network/socket";
+import {ApplicationStatus} from "@/variables";
 
 export function isUserLoggedIn() {
   return socket.connected && state.name && state.status !== ApplicationStatus.Login;

@@ -7,8 +7,8 @@ import {APP_TITLE} from "@/config";
 import {error, toast} from "@/util";
 import {socket, startSinglePlayerGame} from "@/network/socket";
 
-import Navbar from "@/components/Navbar.vue";
-import HomeRoomsList from "@/components/HomeRoomsList.vue";
+import Navbar from "@/components/Navbar/Navbar.vue";
+import HomeRoomList from "@/components/Home/HomeRoomList.vue";
 
 const input = ref("");
 
@@ -90,7 +90,7 @@ function changeName() {
       </div>
     </div>
 
-    <HomeRoomsList/>
+    <HomeRoomList/>
 
 
     <!--    <div class="card card-body bg-dark-subtle">-->

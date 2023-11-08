@@ -1,5 +1,6 @@
 import {state} from "@/state";
-import {ApplicationStatus} from "@/util";
+
+import {ApplicationStatus} from "@/variables";
 
 export const registerNetworkHandler = (socket) => {
   socket.on("connect", () => {

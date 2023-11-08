@@ -16,6 +16,8 @@ export const socket = io(SERVER_ADDR, {
 
 // Initialize socket object
 export function initializeSocket() {
+  socket.removeAllListeners();
+
   // Set query.name to state.name
   socket.io.opts.query.name = state.name;
 

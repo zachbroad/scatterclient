@@ -1,7 +1,7 @@
 <script setup>
 import {state} from "@/state";
 import Countdown from "@/components/Countdown.vue";
-import ScattergoriesBoardResult from "@/components/ScattergoriesBoardResult.vue";
+import ScattergoriesBoardResult from "@/components/GameBoard/ScattergoriesBoardResult.vue";
 import {socket} from "@/network/socket";
 
 function voteGoToLobby() {

@@ -1,12 +1,12 @@
 <script setup>
 import {state} from "@/state";
-import {GameStatus} from "@/util";
-import Lobby from "@/components/GamePage/Lobby.vue";
+import Lobby from "@/components/GamePage/Lobby/Lobby.vue";
 import Results from "@/components/GamePage/Results.vue";
 import Scoring from "@/components/GamePage/Scoring.vue";
 import Starting from "@/components/GamePage/Starting.vue";
 import InProgress from "@/components/GamePage/InProgress.vue";
-import Navbar from "@/components/Navbar.vue";
+import Navbar from "@/components/Navbar/Navbar.vue";
+import {GameStatus} from "@/variables";
 </script>
 
 <template>

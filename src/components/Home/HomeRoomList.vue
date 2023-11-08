@@ -1,6 +1,6 @@
 <script setup>
 import {state} from "@/state";
-import RoomListItem from "@/components/RoomListItem.vue";
+import HomeRoomListItem from "@/components/Home/HomeRoomListItem.vue";
 
 defineProps(["rooms"]);
 </script>
@@ -14,7 +14,7 @@ defineProps(["rooms"]);
       <small>{{ state.rooms.length }} rooms</small>
     </div>
 
-    <RoomListItem v-for="room in state.rooms" :room="room"/>
+    <HomeRoomListItem v-for="room in state.rooms" :room="room"/>
 
     <div v-if="state.rooms.length === 0"
          class="bg-white p-3 mb-3 rounded align-items-center shadow border border-black text-center">

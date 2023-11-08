@@ -1,9 +1,9 @@
 <script setup>
 
 import {APP_TITLE} from "@/config";
-import GameOverviewInfo from "@/components/GameOverviewInfo.vue";
+import GameOverviewInfo from "@/components/WelcomeScreen/GameOverviewInfo.vue";
 import {computed, ref} from "vue";
-import Navbar from "@/components/Navbar.vue";
+import Navbar from "@/components/Navbar/Navbar.vue";
 import {state} from "@/state";
 import {initializeSocket, startSinglePlayerGame} from "@/network/socket";
 import {useToast} from "bootstrap-vue-next";

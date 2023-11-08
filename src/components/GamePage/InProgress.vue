@@ -1,8 +1,8 @@
 <script setup>
-import ScattergoriesBoardPlayable from "@/components/ScattergoriesBoardPlayable.vue";
+import ScattergoriesBoardPlayable from "@/components/GameBoard/ScattergoriesBoardPlayable.vue";
 import {state} from "@/state";
 import {computed, onMounted, ref, watchEffect} from "vue";
-import Navbar from "@/components/Navbar.vue";
+import Navbar from "@/components/Navbar/Navbar.vue";
 
 const letter = ref("");
 const timer = ref(60);

@@ -3,21 +3,9 @@
 import {leaveRoom, state} from "@/state";
 import {computed, ref} from "vue";
 import {socket} from "@/network/socket";
+import {toast} from "@/util";
+import LobbyChat from "@/components/GamePage/Lobby/LobbyChat.vue";
 
-// Messaging
-const message = ref("");
-
-function sendRoomMessage() {
-  if (message.value.trim() !== "") {
-    socket.emit("room:message", {
-      room: state.room.slug,
-      message: message.value
-    });
-  }
-
-  // Reset message value
-  message.value = "";
-}
 
 // Game Related Funcs
 function startGame() {
@@ -27,40 +15,22 @@ function startGame() {
 }
 
 // Networking
-socket.on("room:message", (message) => {
+socket.on("room:chatMessage", (message) => {
   console.log("Got message: " + message);
   state.room.chat = state.room.chat.concat(message);
 });
 
-// Used to auto scroll to bottom with flex-direction reverse col
-const reversedChat = computed(() => {
-  let chat = [...state.room.chat];
-  return chat.reverse();
+socket.on("room:alert", (message) => {
+  toast(message);
 });
+
 
 </script>
 
 <template>
   <div class="container">
     <div class="row justify-content-center align-content-stretch">
-      <div class="col-sm-12 col-lg-5 mb-3 order-sm-first">
-
-        <!-- Chat -->
-        <div class="bg-white card card-body rounded border-dark shadow-sm" style="height: 420px;">
-          <h5>Chat</h5>
-
-          <!-- Chat Box -->
-          <ul class="chat-box">
-            <li v-for="chat in reversedChat" v-text="chat"></li>
-          </ul>
-
-          <!-- Chat Input Box -->
-          <form @submit.prevent="sendRoomMessage" class="d-flex mt-auto">
-            <input class="form-control" type="text" v-model="message">
-            <button class="btn btn-success ms-2" type="submit">Send</button>
-          </form>
-        </div>
-      </div>
+      <LobbyChat />
 
       <!-- Room Info -->
       <div class="col-sm-12 col-lg-3 mb-3 h-100 border-dark-subtle order-sm-last">
@@ -97,12 +67,4 @@ const reversedChat = computed(() => {
   </div>
 </template>
 
-<style scoped>
-.chat-box {
-  display: flex;
-  flex-direction: column-reverse;
-  overflow-y: scroll;
-}
-
-
-</style>
+<style scoped></style>

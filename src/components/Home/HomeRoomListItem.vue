@@ -2,8 +2,8 @@
 
 
 import {computed} from "vue";
-import {GameStatus} from "@/util";
 import {socket} from "@/network/socket";
+import {GameStatus} from "@/variables";
 
 const {room} = defineProps(["room"]);
 
