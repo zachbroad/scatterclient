@@ -1,10 +1,10 @@
 <script setup>
 
 import {leaveRoom, state} from "@/state";
-import {computed, ref} from "vue";
 import {socket} from "@/network/socket";
 import {toast} from "@/util";
 import LobbyChat from "@/components/GamePage/Lobby/LobbyChat.vue";
+import LobbyPlayerList from "@/components/GamePage/Lobby/LobbyPlayerList.vue";
 
 
 // Game Related Funcs
@@ -21,6 +21,10 @@ socket.on("room:chatMessage", (message) => {
 });
 
 socket.on("room:alert", (message) => {
+  // make a sound
+  // beep sound
+
+
   toast(message);
 });
 
@@ -30,7 +34,7 @@ socket.on("room:alert", (message) => {
 <template>
   <div class="container">
     <div class="row justify-content-center align-content-stretch">
-      <LobbyChat />
+      <LobbyChat/>
 
       <!-- Room Info -->
       <div class="col-sm-12 col-lg-3 mb-3 h-100 border-dark-subtle order-sm-last">
@@ -45,6 +49,7 @@ socket.on("room:alert", (message) => {
             <li><b>Topics</b>: All</li>
             <li><b>Difficulty</b>: Normal</li>
           </ul>
+
           <hr>
           <div class="d-flex">
             <button class="btn btn-sm btn-danger" @click="leaveRoom">Leave Room</button>
@@ -52,16 +57,7 @@ socket.on("room:alert", (message) => {
           </div>
         </div>
 
-        <!-- Players -->
-        <div class="bg-white card card-body rounded border-dark shadow-sm mt-3">
-          <h5>Players</h5>
-          <ol class="m-0">
-            <li v-for="client in state.room.clients" class="mb-2">
-              {{ client.username }}
-              <span class="badge small bg-warning text-black float-end">{{ state.room.scores[client.id] }}</span>
-            </li>
-          </ol>
-        </div>
+        <LobbyPlayerList/>
       </div>
     </div>
   </div>

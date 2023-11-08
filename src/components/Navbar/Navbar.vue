@@ -1,5 +1,6 @@
 <script setup>
-import {goHome, isUserLoggedIn} from "@/state";
+import {goHome, isUserLoggedIn, state} from "@/state";
+import {ApplicationStatus, GameStatus} from "@/variables";
 
 defineProps(["left", "center", "right"]);
 </script>
@@ -11,7 +12,7 @@ defineProps(["left", "center", "right"]);
 
         <div v-if="left" v-html="left"></div>
         <div v-else>
-          <a v-if="isUserLoggedIn()" href="/public" @click.prevent="goHome">Home</a>
+          <a v-if="state.status === ApplicationStatus.InGame" href="/public" @click.prevent="goHome">Home</a>
         </div>
 
         <a class="navbar-brand fw-bold align-self-center mx-auto" href="/public">{{ center }}</a>

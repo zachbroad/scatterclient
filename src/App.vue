@@ -34,11 +34,6 @@ import {ApplicationStatus} from "@/variables";
     </template>
   </template>
 
-  <!--  <div class="container" v-else>-->
-  <!--    <div class="card card-body">-->
-  <!--      Not connected...-->
-  <!--    </div>-->
-  <!--  </div>-->
 </template>
 
 <style scoped>
