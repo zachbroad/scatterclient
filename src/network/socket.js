@@ -5,6 +5,7 @@ import {registerNetworkHandler} from "@/network/networkHandler";
 import {io} from "socket.io-client";
 import {SERVER_ADDR} from "@/config";
 
+// Create socket object
 export const socket = io(SERVER_ADDR, {
   reconnectionDelayMax: 10000,
   autoConnect: false,
@@ -13,6 +14,7 @@ export const socket = io(SERVER_ADDR, {
   }
 });
 
+// Initialize socket object
 export function initializeSocket() {
   // Set query.name to state.name
   socket.io.opts.query.name = state.name;
@@ -26,7 +28,16 @@ export function initializeSocket() {
   // TODO: Handle socket error connecting
 }
 
-export function startSinglePlayer() {
+export async function startSinglePlayerGame() {
+  console.log("Starting single player game!");
+
+  // Set name to "Single Player"
+  const SINGLE_PLAYER_NAME = "Single Player";
+  state.name = SINGLE_PLAYER_NAME;
+  socket.io.opts.query.name = SINGLE_PLAYER_NAME;
+
+  // Connect to server and join single player room
+  initializeSocket();
   socket.emit("room:singlePlayer");
 }
 

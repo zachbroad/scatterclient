@@ -1,6 +1,5 @@
 <script setup>
 import {goHome, isUserLoggedIn} from "@/state";
-import {ApplicationStatus} from "@/util";
 
 defineProps(["left", "center", "right"]);
 </script>

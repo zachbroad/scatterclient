@@ -16,6 +16,7 @@ function voteGoToLobby() {
   <div class="container">
     <div class="row">
 
+      <!-- Results -->
       <div class="d-flex my-4 flex-column">
         <div class="justify-content-center bg-white text-center py-4 rounded mx-auto px-4 border border-dark">
           <h1 class="">The results are in!</h1>
@@ -24,6 +25,7 @@ function voteGoToLobby() {
         </div>
       </div>
 
+      <!-- Go To Lobby -->
       <div class="d-flex my-4 flex-column">
         <div class="justify-content-center bg-white text-center py-4 rounded mx-auto px-4">
           <ul v-for="client in state.room.clients">
@@ -34,6 +36,7 @@ function voteGoToLobby() {
       </div>
     </div>
 
+    <!-- Results -->
     <div class="row">
       <ScattergoriesBoardResult
           v-for="(result, key) in state.room.game.results"

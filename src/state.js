@@ -33,8 +33,14 @@ export function leaveRoom() {
 }
 
 export function goHome() {
-  leaveRoom()
+  // If in game, ask for confirmation
+  if (state.status === ApplicationStatus.InGame) {
+    if (!confirm("Are you sure you want to leave the game?")) {
+      return;
+    }
+  }
 
+  leaveRoom()
   state.status = ApplicationStatus.InMainLobby;
 }
 

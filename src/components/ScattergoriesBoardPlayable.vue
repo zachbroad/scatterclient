@@ -1,8 +1,7 @@
 <script setup>
 
-import {computed, onMounted, reactive, ref, watchEffect} from "vue";
+import {onMounted, reactive, ref} from "vue";
 import {state} from "@/state";
-import Countdown from "@/components/Countdown.vue";
 import {socket} from "@/network/socket";
 
 const letter = ref("A");
@@ -20,6 +19,7 @@ onMounted(() => {
   letter.value = state.room.game.letter;
 });
 
+// Send answers to server when requested
 socket.on("room:requestAnswers", () => {
   console.log("Server is requesting answers...");
 
@@ -35,10 +35,6 @@ socket.on("room:requestAnswers", () => {
 
 <template>
   <div class="board-item-container card p-0">
-    <!--    <h2>Game</h2>-->
-    <!--    <p>Time left: {{ timer }}</p>-->
-    <!--    <Countdown :time="state.room.game.roundDuration" :letter="letter"/>-->
-    <!--    <hr>-->
     <div class="card-body">
       <div v-for="(prompt, index) in state.room.game.currentPrompts" class="board-item" :key="index">
         <p>{{ prompt }}</p>

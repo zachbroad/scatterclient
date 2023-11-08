@@ -12,12 +12,12 @@ import Navbar from "@/components/Navbar.vue";
 <template>
   <!--  Waiting -->
   <div v-if="state.room.status === GameStatus.Waiting">
-    <Navbar :center="state.room.slug"/>
+    <Navbar :center="state.room.name"/>
     <Lobby/>
   </div>
   <!-- Starting -->
   <div v-else-if="state.room.status === GameStatus.Starting">
-    <Navbar :center="state.room.slug"/>
+    <Navbar :center="state.room.name"/>
     <Starting/>
   </div>
 
@@ -28,13 +28,13 @@ import Navbar from "@/components/Navbar.vue";
 
   <!-- Scoring -->
   <div v-else-if="state.room.status === GameStatus.Scoring">
-    <Navbar :center="state.room.slug"/>
+    <Navbar :center="state.room.name"/>
     <Scoring/>
   </div>
 
   <!-- Results -->
   <div v-else-if="state.room.status === GameStatus.Results">
-    <Navbar :center="state.room.slug"/>
+    <Navbar :center="state.room.name"/>
     <Results/>
   </div>
 

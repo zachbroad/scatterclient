@@ -5,7 +5,7 @@ import GameOverviewInfo from "@/components/GameOverviewInfo.vue";
 import {computed, ref} from "vue";
 import Navbar from "@/components/Navbar.vue";
 import {state} from "@/state";
-import {initializeSocket, startSinglePlayer} from "@/network/socket";
+import {initializeSocket, startSinglePlayerGame} from "@/network/socket";
 import {useToast} from "bootstrap-vue-next";
 import {toast} from "@/util";
 
@@ -40,10 +40,11 @@ function connect() {
 
         <div class="d-flex justify-content-around mt-3">
           <!-- TODO : STATE CONNECTING -->
-          <button class="btn btn-primary" @click="startSinglePlayer">Play Single Player</button>
+          <button class="btn btn-primary" @click="startSinglePlayerGame" type="button">Play Single Player</button>
           <button class="btn btn-success" type="submit">{{ !state.connecting ? `Connect to Server` : `Connecting...` }}</button>
         </div>
       </form>
+
     </div>
   </div>
 

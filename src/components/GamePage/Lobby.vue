@@ -3,7 +3,6 @@
 import {leaveRoom, state} from "@/state";
 import {computed, ref} from "vue";
 import {socket} from "@/network/socket";
-import {ApplicationStatus} from "@/util";
 
 // Messaging
 const message = ref("");
@@ -62,6 +61,8 @@ const reversedChat = computed(() => {
           </form>
         </div>
       </div>
+
+      <!-- Room Info -->
       <div class="col-sm-12 col-lg-3 mb-3 h-100 border-dark-subtle order-sm-last">
         <div class="bg-white card card-body rounded shadow-lg">
           <div class="d-flex justify-content-between">
@@ -81,6 +82,7 @@ const reversedChat = computed(() => {
           </div>
         </div>
 
+        <!-- Players -->
         <div class="bg-white card card-body rounded border-dark shadow-sm mt-3">
           <h5>Players</h5>
           <ol class="m-0">

@@ -11,12 +11,11 @@ const score = computed(() => results.reduce((a, b) => a + b, 0));
 
 <template>
   <div class="board-item-container card p-0 mb-3">
-    <!--        <p>Prompts: {{ prompts }}</p>-->
-    <!--        <p>Results: {{ results }}</p>-->
-    <!--        <p>Answers: {{ answers }}</p>-->
     <div class="card-header">
       <b>{{ username }} - <span class="float-end badge bg-success">score: {{ score }}</span></b>
     </div>
+
+    <!-- TODO: Make this a component -->
     <div class="card-body">
       <div v-for="(prompt, index) in state.room.game.currentPrompts" class="board-item" :key="index">
         <p>{{ prompt }}</p>

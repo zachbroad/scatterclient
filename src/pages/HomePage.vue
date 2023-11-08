@@ -6,8 +6,9 @@ import {onMounted, onUnmounted, ref} from "vue";
 import RoomListItem from "@/components/RoomListItem.vue";
 import Navbar from "@/components/Navbar.vue";
 import {APP_TITLE} from "@/config";
-import {socket, startSinglePlayer} from "@/network/socket";
+import {socket, startSinglePlayerGame} from "@/network/socket";
 import {toast} from "@/util";
+import HomeRoomsList from "@/components/HomeRoomsList.vue";
 
 const input = ref("");
 
@@ -56,6 +57,13 @@ onUnmounted(() => {
   clearInterval(keepAskingInterval);
 });
 
+function changeName() {
+  const newName = prompt("What would you like to change your name to?");
+  socket.emitWithAck("global:changeName", newName);
+  // change name in state
+  state.name = newName;
+}
+
 
 </script>
 
@@ -67,30 +75,18 @@ onUnmounted(() => {
 
       <div class="d-flex mb-4">
         <p>Connected as {{ state.name }}</p>
-        <button class="btn btn-sm btn-danger ms-auto" @click="disconnect">Disconnect</button>
+        <button class="btn btn-sm btn-outline-primary ms-auto me-2" @click="changeName">Change Name</button>
+        <button class="btn btn-sm btn-danger " @click="disconnect">Disconnect</button>
       </div>
       <div class="d-flex flex-row justify-content-end">
-        <button class="btn btn-sm btn-outline-primary me-2" @click="startSinglePlayer">Single Player Game</button>
+        <button class="btn btn-sm btn-outline-primary me-2" @click="startSinglePlayerGame">Single Player Game</button>
         <button class="btn btn-sm btn-outline-success me-2" @click="joinRandomRoom">Join Random Room</button>
         <button class="btn btn-sm btn-success " @click="getRoomNameAndCreate">Create Room</button>
       </div>
     </div>
 
-    <div style="max-width: 780px; margin: 0 auto;">
-      <div class="bg-white p-3 mb-3 rounded align-items-center shadow border border-black">
-        <div class="d-flex justify-content-between">
-          <h3 class="m-0">🏠 Room List 🏠</h3>
-        </div>
-        <small>{{ state.rooms.length }} rooms</small>
-      </div>
+    <HomeRoomsList />
 
-      <RoomListItem v-for="room in state.rooms" :room="room"/>
-
-      <div v-if="state.rooms.length === 0"
-           class="bg-white p-3 mb-3 rounded align-items-center shadow border border-black text-center">
-        <b>😢 no rooms found 😢</b>
-      </div>
-    </div>
 
     <!--    <div class="card card-body bg-dark-subtle">-->
     <!--      <h3>ScatterChat</h3>-->
