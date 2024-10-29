@@ -15,7 +15,7 @@ A real-time multiplayer word game inspired by Scattergories, built with Vue 3 an
 
 - **Frontend**: Vue 3, Vite, Bootstrap
 - **State Management**: Vue Reactive State
-- **Real-time Communication**: Socket.IO (via [socket.io-client](https://github.com/socketio/socket.io-client)(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client)))
+- **Real-time Communication**: Socket.IO (via [socket.io-client](https://github.com/socketio/socket.io-client))
 - **AI Integration**: OpenAI GPT-4 API
 - **Styling**: Bootstrap/Bootswatch
 
