@@ -1,31 +1,27 @@
-# scatterclient
+# Categories.LIVE
 
-This template should help get you started developing with Vue 3 in Vite.
+A real-time multiplayer word game inspired by Scattergories, built with Vue 3 and Socket.IO. Players compete by submitting creative answers to various categories, all starting with the same randomly chosen letter.
 
-## Recommended IDE Setup
+## Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and
-disable
-Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Real-time multiplayer gameplay using Socket.IO
+- Modern Vue 3 + Vite frontend architecture
+- AI-powered prompt generation and answer validation
+- Responsive design using Bootstrap
+- Live chat functionality
+- Custom game rooms with configurable settings
 
-## Customize configuration
+## Technical Stack
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- **Frontend**: Vue 3, Vite, Bootstrap
+- **State Management**: Vue Reactive State
+- **Real-time Communication**: Socket.IO (via [socket.io-client](https://github.com/socketio/socket.io-client)(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client))(via [socket.io-client](https://github.com/socketio/socket.io-client)))
+- **AI Integration**: OpenAI GPT-4 API
+- **Styling**: Bootstrap/Bootswatch
 
-## Project Setup
+## Prerequisites
 
-```sh
-npm install
-```
+Before running this project, make sure you have:
+- Node.js (v14 or higher)
+- npm (v6 or higher)
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
