@@ -2,6 +2,8 @@
 
 A real-time multiplayer word game inspired by Scattergories, built with Vue 3 and Socket.IO. Players compete by submitting creative answers to various categories, all starting with the same randomly chosen letter.
 
+![Scattergories Gameplay](https://github.com/user-attachments/assets/8baba918-3850-4fd7-bc06-d025b6fbbbcb)
+
 ## Features
 
 - Real-time multiplayer gameplay using Socket.IO
