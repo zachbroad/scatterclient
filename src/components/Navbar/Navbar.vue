@@ -12,10 +12,10 @@ defineProps(["left", "center", "right"]);
 
         <div v-if="left" v-html="left"></div>
         <div v-else>
-          <a v-if="state.status === ApplicationStatus.InGame" href="/public" @click.prevent="goHome">Home</a>
+          <a v-if="state.status === ApplicationStatus.InGame" href="#" @click.prevent="goHome">Home</a>
         </div>
 
-        <a class="navbar-brand fw-bold align-self-center mx-auto" href="/public">{{ center }}</a>
+        <a class="navbar-brand fw-bold align-self-center mx-auto" href="#">{{ center }}</a>
 
         <div v-if="right" v-html="right"></div>
 
